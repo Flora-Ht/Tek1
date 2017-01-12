@@ -1,0 +1,7 @@
+# Ignore repositories
+*
+
+# But not these files
+!.projects.gws
+!.gitignore
+!current
