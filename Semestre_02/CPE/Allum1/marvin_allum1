@@ -1,0 +1,317 @@
+Started by upstream project "B-CPE-155/alum1/2015/LYN-2-1-jobs" build number 2
+originally caused by:
+ Started by upstream project "B-CPE-155/alum1/global" build number 2
+ originally caused by:
+  Started by user Younès Serraj
+[EnvInject] - Loading node environment variables.
+Building remotely on slave2.ci.epitech.eu (slave) in workspace /home/jenkins/workspace/B-CPE-155/alum1/2015/LYN-2-1/huot_b
+[WS-CLEANUP] Deleting project workspace...
+Cloning the remote Git repository
+Cloning repository file:///home/jenkins/mouli/B-CPE-155/alum1
+ > git init /home/jenkins/workspace/B-CPE-155/alum1/2015/LYN-2-1/huot_b/mouli # timeout=10
+Fetching upstream changes from file:///home/jenkins/mouli/B-CPE-155/alum1
+ > git --version # timeout=10
+ > git -c core.askpass=true fetch --tags --progress file:///home/jenkins/mouli/B-CPE-155/alum1 +refs/heads/*:refs/remotes/local/*
+ > git config remote.local.url file:///home/jenkins/mouli/B-CPE-155/alum1 # timeout=10
+ > git config --add remote.local.fetch +refs/heads/*:refs/remotes/local/* # timeout=10
+ > git config remote.local.url file:///home/jenkins/mouli/B-CPE-155/alum1 # timeout=10
+Fetching upstream changes from file:///home/jenkins/mouli/B-CPE-155/alum1
+ > git -c core.askpass=true fetch --tags --progress file:///home/jenkins/mouli/B-CPE-155/alum1 +refs/heads/*:refs/remotes/local/*
+Seen branch in repository local/master
+Seen 1 remote branch
+Checking out Revision 1efe42b3be907e6375acad559ee7ef4fccd37849 (local/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 1efe42b3be907e6375acad559ee7ef4fccd37849
+ > git rev-list 1efe42b3be907e6375acad559ee7ef4fccd37849 # timeout=10
+No emails were triggered.
+No emails were triggered.
+[huot_b] $ /bin/sh -xe /tmp/hudson7894643000418333660.sh
++ [ Git = Ramassage ]
++ git clone --depth 1 ramassage-tek@git.epitech.eu:/huot_b/CPE_2015_Allum1 rendu
+Cloning into 'rendu'...
+[huot_b] $ /bin/sh -xe /tmp/hudson3454193038800020455.sh
++ [ -d rendu ]
++ cd rendu
++ find+  . -path ./allum1 -print0xargs -0 -r rm -rf
+
+[huot_b] $ /bin/sh -xe /tmp/hudson2479178531583323815.sh
++ docker run --rm -m 512M --ulimit nproc=1024:1024 --ulimit cpu=300 -e BUGS_LOGIN=huot_b -e BUGS_CITY=LYN -e BUGS_MODULE=B-CPE-155 -e BUGS_SLUG=alum1 -e BUGS_YEAR=2015 -e BUGS_INST=LYN-2-1 -e MAKE_RULE= -v /home/jenkins/workspace/B-CPE-155/alum1/2015/LYN-2-1/huot_b:/home/bill/workspace -v /home/jenkins/.bugs:/home/bill/.bugs epitechcontent/blinux-make:latest
++ '[' -z x ']'
++ IPWD=/home/bill/workspace
++ /home/bill/norme_deepthought.py rendu -score -nocheat -swap_traces -malloc
++ cp norm.dpr norm.note mouli/
++ '[' -f mouli/Makefile ']'
++ make -C mouli
+make: Entering directory '/home/bill/workspace/mouli'
+make -C moulinette
+make[1]: Entering directory '/home/bill/workspace/mouli/moulinette'
+gcc -W -Wall -Wextra -g -I .   -c -o main.o main.c
+gcc -W -Wall -Wextra -g -I .   -c -o get_next_line.o get_next_line.c
+gcc -o poc main.o get_next_line.o 
+make[1]: Leaving directory '/home/bill/workspace/mouli/moulinette'
+make: Leaving directory '/home/bill/workspace/mouli'
++ '[' -f rendu/Makefile ']'
++ make -C rendu
+make: Entering directory '/home/bill/workspace/rendu'
+Compiling libmy.a ...
+-> my_getnbr.c
+-> my_is_alphanum.c
+-> my_put_nbr.c
+-> my_putchar.c
+-> my_putstr.c
+-> my_show_wordtab.c
+-> my_str_to_wordtab.c
+-> my_strcat.c
+-> my_strcmp.c
+-> my_strcpy.c
+-> my_strdup.c
+-> my_strlen.c
+-> my_strncat.c
+-> my_strstr.c
+-> my_str_isnum.c
+Compiling my_printf.a ...
+-> my_putchar.c
+-> my_put_nbr.c
+-> my_putnbr_base.c
+-> my_put_unbr_base.c
+-> my_put_long.c
+-> my_strlen.c
+-> my_putstr.c
+-> my_showstr.c
+-> my_printf.c
+-> fill_the_tabs.c
+-> flags.c
+-> flags_2.c
+-> display.c
+-> get_next_line.c
+-> ia.c
+-> main.c
+-> player.c
+Making executable ...
+All done.
+make: Leaving directory '/home/bill/workspace/rendu'
++ cp -rn rendu/allum1 rendu/display.c rendu/display.o rendu/get_next_line.c rendu/get_next_line.o rendu/ia.c rendu/ia.o rendu/include rendu/lib rendu/main.c rendu/main.o rendu/Makefile rendu/my_printf rendu/player.c rendu/player.o mouli
++ cd mouli
++ bugs -version
+Current version: 0.16.4
++ bugs -out 'txt xunit' -rec 'graph api' -login huot_b -city LYN -slug alum1 -module B-CPE-155 -inst LYN-2-1 -year 2015
+==> Test suite: 01 - Initial display of 4x4 board
+====> Test: EOF
+Execution (PID 175) started at 20/02/2016 20:08:54.662 +0000
+Execution (PID 175) completed at 20/02/2016 20:08:54.664 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Given valid line and matches input
+Execution (PID 181) started at 20/02/2016 20:08:54.665 +0000
+Execution (PID 181) completed at 20/02/2016 20:08:54.669 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Given valid line input
+Execution (PID 185) started at 20/02/2016 20:08:54.669 +0000
+Execution (PID 185) completed at 20/02/2016 20:08:54.673 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+==> Test suite: 02 - Bad line inputs
+====> Test: Empty line
+Execution (PID 188) started at 20/02/2016 20:08:54.673 +0000
+Execution (PID 188) completed at 20/02/2016 20:08:54.676 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Negative number
+Execution (PID 191) started at 20/02/2016 20:08:54.677 +0000
+Execution (PID 191) completed at 20/02/2016 20:08:54.681 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Number too big
+Execution (PID 194) started at 20/02/2016 20:08:54.681 +0000
+Execution (PID 194) completed at 20/02/2016 20:08:54.685 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Number with other invalid characters
+Execution (PID 197) started at 20/02/2016 20:08:54.685 +0000
+Execution (PID 197) completed at 20/02/2016 20:08:54.689 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Number with withspaces
+Execution (PID 200) started at 20/02/2016 20:08:54.689 +0000
+Execution (PID 200) completed at 20/02/2016 20:08:54.693 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Zero
+Execution (PID 203) started at 20/02/2016 20:08:54.693 +0000
+Execution (PID 203) completed at 20/02/2016 20:08:54.696 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+==> Test suite: 03 - Bad matches inputs
+====> Test: Empty matches
+Execution (PID 206) started at 20/02/2016 20:08:54.697 +0000
+Execution (PID 206) completed at 20/02/2016 20:08:54.7 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Negative number
+Execution (PID 209) started at 20/02/2016 20:08:54.701 +0000
+Execution (PID 209) completed at 20/02/2016 20:08:54.704 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Number too big
+Execution (PID 212) started at 20/02/2016 20:08:54.705 +0000
+Execution (PID 212) completed at 20/02/2016 20:08:54.708 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Number with other invalid characters
+Execution (PID 215) started at 20/02/2016 20:08:54.709 +0000
+Execution (PID 215) completed at 20/02/2016 20:08:54.712 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Number with withspaces
+Execution (PID 218) started at 20/02/2016 20:08:54.712 +0000
+Execution (PID 218) completed at 20/02/2016 20:08:54.716 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Zero
+Execution (PID 221) started at 20/02/2016 20:08:54.716 +0000
+Execution (PID 221) completed at 20/02/2016 20:08:54.72 +0000
+----- PROGRAM OUTPUT (stdout) -----
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+==> Test suite: 04 - Full game
+====> Test: Try #1
+Execution (PID 224) started at 20/02/2016 20:08:54.72 +0000
+Execution (PID 224) completed at 20/02/2016 20:08:54.722 +0000
+----- PROGRAM OUTPUT (stdout) -----
+OK
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Try #10
+Execution (PID 226) started at 20/02/2016 20:08:54.722 +0000
+Execution (PID 226) completed at 20/02/2016 20:08:54.724 +0000
+----- PROGRAM OUTPUT (stdout) -----
+KO (AI move is impossible)
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+Test failure: Expected on stdout: <^OK
+$>, got:<KO (AI move is impossible)
+>
+====> Test: Try #2
+Execution (PID 228) started at 20/02/2016 20:08:54.725 +0000
+Execution (PID 228) completed at 20/02/2016 20:08:54.726 +0000
+----- PROGRAM OUTPUT (stdout) -----
+KO (AI move is impossible)
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+Test failure: Expected on stdout: <^OK
+$>, got:<KO (AI move is impossible)
+>
+====> Test: Try #3
+Execution (PID 230) started at 20/02/2016 20:08:54.727 +0000
+Execution (PID 230) completed at 20/02/2016 20:08:54.729 +0000
+----- PROGRAM OUTPUT (stdout) -----
+KO (AI move is impossible)
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+Test failure: Expected on stdout: <^OK
+$>, got:<KO (AI move is impossible)
+>
+====> Test: Try #4
+Execution (PID 232) started at 20/02/2016 20:08:54.729 +0000
+Execution (PID 232) completed at 20/02/2016 20:08:54.731 +0000
+----- PROGRAM OUTPUT (stdout) -----
+OK
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Try #5
+Execution (PID 234) started at 20/02/2016 20:08:54.732 +0000
+Execution (PID 234) completed at 20/02/2016 20:08:54.734 +0000
+----- PROGRAM OUTPUT (stdout) -----
+OK
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+PASSED
+====> Test: Try #6
+Execution (PID 236) started at 20/02/2016 20:08:54.735 +0000
+Execution (PID 236) completed at 20/02/2016 20:08:54.736 +0000
+----- PROGRAM OUTPUT (stdout) -----
+KO (AI move is impossible)
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+Test failure: Expected on stdout: <^OK
+$>, got:<KO (AI move is impossible)
+>
+====> Test: Try #7
+Execution (PID 238) started at 20/02/2016 20:08:54.737 +0000
+Execution (PID 238) completed at 20/02/2016 20:08:54.739 +0000
+----- PROGRAM OUTPUT (stdout) -----
+KO (AI move is impossible)
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+Test failure: Expected on stdout: <^OK
+$>, got:<KO (AI move is impossible)
+>
+====> Test: Try #8
+Execution (PID 240) started at 20/02/2016 20:08:54.739 +0000
+Execution (PID 240) completed at 20/02/2016 20:08:54.741 +0000
+----- PROGRAM OUTPUT (stdout) -----
+KO (AI move is impossible)
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+Test failure: Expected on stdout: <^OK
+$>, got:<KO (AI move is impossible)
+>
+====> Test: Try #9
+Execution (PID 242) started at 20/02/2016 20:08:54.742 +0000
+Execution (PID 242) completed at 20/02/2016 20:08:54.744 +0000
+----- PROGRAM OUTPUT (stdout) -----
+KO (AI move is impossible)
+----- PROGRAM OUTPUT (stderr) -----
+------ END OF PROGRAM OUTPUT ------
+Test failure: Expected on stdout: <^OK
+$>, got:<KO (AI move is impossible)
+>
++ cd /home/bill/workspace
++ cp mouli/trace.txt .
++ cp mouli/note.txt .
++ cp mouli/tests_report.xml .
++ '[' -z ']'
++ rm -rf mouli
+[huot_b] $ /bin/sh -xe /tmp/hudson2313449251427437416.sh
++ [ Mail_and_log = Mail_follow_up ]
+Recording test results
+Build step 'Publish JUnit test result report' changed build result to UNSTABLE
+Archiving artifacts
+Email was triggered for: Always
+Sending email for trigger: Always
+Sending email to: flora.huot@epitech.eu
+Email was triggered for: Always
+Sending email for trigger: Always
+Sending email to: flora.huot@epitech.eu

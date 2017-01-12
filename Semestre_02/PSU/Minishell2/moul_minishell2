@@ -1,0 +1,154 @@
+#!/bin/sh
+
+DEBUG=0
+PIPE=pipe
+OUT=out
+SHELL="./mysh"
+MKFIFO=`which mkfifo`
+TAIL=`which tail`
+
+debug()
+{
+  if [ $DEBUG -eq 1 ]
+  then
+    echo $* 1>&2
+  fi
+}
+
+launch_shell()
+{
+  $MKFIFO $PIPE
+  cp $TAIL mytail 2>&1 >/dev/null
+  (./mytail -f $PIPE 2>/dev/null | $SHELL 2>&1 > $OUT &) >/dev/null 2>/dev/null
+}
+
+kill_shell()
+{
+  if [ `pidof $SHELL | wc -l` -ne 0 ]
+  then
+    killall -9 $SHELL 2>&1 > /dev/null
+  fi
+  if [ `pidof mytail | wc -l` -ne 0 ]
+  then
+    killall mytail 2>&1 > /dev/null
+  fi
+  rm -f $PIPE $OUT 2>&1 > /dev/null
+}
+
+clean()
+{
+  rm -f $PIPE $OUT mytail 2>&1 > /dev/null
+}
+
+test01()
+{
+  kill_shell 2>&1 > /dev/null
+  launch_shell 2>&1 > /dev/null
+  touch "tmp.$$"
+  if [ `pidof $SHELL | wc -l` -eq 1 ]
+  then
+    echo "ls" > $PIPE
+  fi
+  sleep 0.5
+  cat $OUT | grep "tmp.$$" 2>&1 >/dev/null
+  if [ $? -eq 0 ]
+  then
+    echo -n "OK "
+  else
+    echo -n "KO "
+  fi
+  rm -f tmp.$$ 2>&1 > /dev/null
+}
+
+test02()
+{
+  kill_shell 2>&1 > /dev/null
+  launch_shell 2>&1 > /dev/null
+  touch "tmp.$$"
+  if [ `pidof $SHELL | wc -l` -eq 1 ]
+  then
+    echo "ls -la" > $PIPE
+  fi
+  sleep 0.5
+  cat $OUT | grep "tmp.$$" 2>&1 >/dev/null
+  if [ $? -eq 0 ]
+  then
+    echo -n "OK "
+  else
+    echo -n "KO "
+  fi
+  rm -f tmp.$$ 2>&1 > /dev/null
+}
+
+test03()
+{
+  kill_shell 2>&1 > /dev/null
+  launch_shell 2>&1 > /dev/null
+  touch "tmpx.$$"
+  if [ `pidof $SHELL | wc -l` -eq 1 ]
+  then
+    echo "/ls" > $PIPE
+  fi
+  sleep 0.5
+  cat $OUT | grep "tmpx.$$" 2>&1 >/dev/null
+  if [ $? -eq 0 ]
+  then
+    echo -n "KO "
+  else
+    echo -n "OK "
+  fi
+  rm -f tmpx.$$ 2>&1 > /dev/null
+}
+
+test04()
+{
+  kill_shell 2>&1 > /dev/null
+  launch_shell 2>&1 > /dev/null
+  if [ `pidof $SHELL | wc -l` -eq 1 ]
+  then
+    echo "setenv testenv" > $PIPE
+  fi
+  sleep 0.2
+  if [ `pidof $SHELL | wc -l` -eq 1 ]
+  then
+    echo "setenv dark vador" > $PIPE
+  fi
+  sleep 0.2
+  if [ `pidof $SHELL | wc -l` -eq 1 ]
+  then
+    echo "env" > $PIPE
+  fi
+  sleep 0.2
+  if [ `pidof $SHELL | wc -l` -eq 1 ]
+  then
+    echo "setenv my4 my2" > $PIPE
+  fi
+  sleep 0.2
+  if [ `pidof $SHELL | wc -l` -eq 1 ]
+  then
+    echo "unsetenv dark" > $PIPE
+  fi
+  sleep 0.2
+  if [ `pidof $SHELL | wc -l` -eq 1 ]
+  then
+    echo "env" > $PIPE
+  fi
+  sleep 0.5
+  a=`cat $OUT | grep "dark" | grep "vador" | wc -l`
+  b=`cat $OUT | grep "my4" | grep "my2" | wc -l`
+  c=`cat $OUT | grep "testenv" | wc -l`
+  d=`cat $OUT | grep "dark" | wc -l`
+  if [ $a -eq 1 -a $b -eq 1 -a $c -eq 2 -a $d -eq 1 ]
+  then
+    echo -n "OK "
+  else
+    echo -n "KO "
+  fi
+}
+
+test01 # ls
+test02 # ls -la
+test03 # /ls
+test04 # setenv et unsetenv
+
+kill_shell
